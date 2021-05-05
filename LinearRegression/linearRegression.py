@@ -8,7 +8,12 @@ class LinearRegression:
         self.bias=None
 
     def fit(self,X,y):
-        pass
+        n_samples,n_features=X.shape
+        self.weights=np.zeros(n_features)
+        self.bias=0
+
+        for _ in range(self.n_iters)
+        
     
     def predict(self,X):
         pass
