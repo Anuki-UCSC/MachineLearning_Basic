@@ -9,3 +9,6 @@ X_train,X_test,y_train,y_test=train_test_split(X,y,test_size=0.2,random_state=12
 fig=plt.figure(figsize=(8,6))
 plt.scatter(X[:,0],y, color="b",marker="o",s=30)
 plt.show()
+
+print(X_train.shape)
+print(y_train.shape)
