@@ -15,6 +15,9 @@ class LogisticRegrssion:
         self.weight=np.zeros(n_features)
         self.bias=0
 
+
+    def sigmoid(self,x):
+        return 1/(1 + np.exp(-x))
        
 
     
