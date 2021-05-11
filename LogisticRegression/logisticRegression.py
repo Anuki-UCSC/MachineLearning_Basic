@@ -9,6 +9,12 @@ class LogisticRegrssion:
         self.bias=None
         self.weights=None
 
-   
+    def fit(self,X,y):
+        # init parameters
+        n_samples,n_features=X.shape
+        self.weight=np.zeros(n_features)
+        self.bias=0
+
+       
 
     
