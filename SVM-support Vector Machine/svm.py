@@ -9,3 +9,7 @@ class SVM:
         self.b=None
 
 
+
+def predict(self,X):
+    linear_output=np.(X,self.w) - self.b
+    return np.sign(linear_output)
