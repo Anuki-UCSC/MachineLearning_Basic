@@ -29,5 +29,5 @@ def fit(self,X,y):
 
 
 def predict(self,X):
-    linear_output=np.(X,self.w) - self.b
+    linear_output=np.dot(X,self.w) - self.b
     return np.sign(linear_output)
