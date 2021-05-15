@@ -26,6 +26,17 @@ class DecisionTree:
         self.n_feats=n_feats
         self.root=None
 
+    
+    def fit(self,X,y):
+        #grow tree
+        self.n_feats=X.shape[1] if not self.n_feats else min(self.n_feats,X.shape[1])
+        self.root=self._grow_tree(X,y)
+
+    
+
+    def predict(self,X):
+
+
 
 
 
