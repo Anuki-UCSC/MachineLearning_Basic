@@ -64,7 +64,28 @@ class DecisionTree:
         return split_idx, split_threh
 
 
-        
+     def _information_gain(self,y,X_column, split_threh):
+         #parent entropy E
+         parent_entropy=entropy(y)
+         # genarate split
+         left_idxs,right_idxs=self.spilt(X_column, split_threh)
+
+         if len(left_idxs) == 0 or len(right_idxs)==0:
+             return 0
+         # weight avg child E
+         n=len(y)
+         n_l,n_r=len(left_idxs),len(right_idxs)
+         e_l,e_r=entropy(y[left_idxs]),entropy(y[right_idxs])
+         child_entropy= (n_l/n) * e_l +(n_r/n) * e_r
+         # return information gain 
+         ig =parent_entropy -child_entropy
+         return ig  
+
+
+    def _split(self, X_column,split_threh):
+        left_idxs=np.argwhere(X_column <= split_threh).flatten()
+        right_idxs=np.argwhere(X_column > split_threh).flatten()
+        return left_idxs, right_idxs
 
     def predict(self,X):
 
