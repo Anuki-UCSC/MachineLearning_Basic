@@ -46,6 +46,10 @@ class DecisionTree:
 
         #greedy search
         best_feat, best_thresh=self._best_criteria(X,y,feat_idxs)
+        left_idxs,right_idxs=self.split(X[:,best_feat],best_thresh)
+        left=self._grow_tree(X[left_idxs,:],y[left_idxs],depth-1)
+        right=self._grow_tree(X[right_idxs,:],y[right_idxs],depth+1)
+        return Node(best_feat,best_thresh,left, right)
 
     def _best_criteria(self,X,y,feat_idxs):
         best_gain=-1
