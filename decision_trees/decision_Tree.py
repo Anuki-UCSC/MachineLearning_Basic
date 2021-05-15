@@ -32,11 +32,47 @@ class DecisionTree:
         self.n_feats=X.shape[1] if not self.n_feats else min(self.n_feats,X.shape[1])
         self.root=self._grow_tree(X,y)
 
-    
+    def _grow_tree(self,X,y,depth=0):
+        n_samples,n_features=X.shape
+        n_labels=len(np.unique(y))
+        #stopping criteria
+        if(depth>=self.max_depth
+            or n_labels==1
+            or n_samples<self.min_samples_split):
+            leaf_value=self._most_common_label(y)
+            return Node(value=leaf_value)
+
+        feat_idxs=np.randm.chice(n_features,self.n_feats, replace=False)
+
+        #greedy search
+        best_feat, best_thresh=self._best_criteria(X,y,feat_idxs)
+
+    def _best_criteria(self,X,y,feat_idxs):
+        best_gain=-1
+        split_idx, split_threh=None,None
+        for feat_idx in feat_idxs:
+            X_column=X[:,feat_idx]
+            thresholds=np.unique(X_column)
+            for threshold in thresholds:
+                gain=self._information_gain(y,X_column, threshold)
+
+                if gain>best_gain:
+                    best_gain=gain
+                    split_idx=feat_idx
+                    split_threh=threshold
+
+        return split_idx, split_threh
+
+
+        
 
     def predict(self,X):
 
 
 
+    def _most_common_label(self,y):
+        counter=Counter(y)
+        most_common=counter.most_common(1)[0][0]
+        return most_common
 
 
