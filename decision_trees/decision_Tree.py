@@ -15,4 +15,17 @@ class Node:
         self.left=left
         self.right=right
         self.value=value
-        
+
+    def is_leaf_node(self):
+        return self.value is not None
+
+class DecisionTree:
+    def __init__(self,min_samples_split=2,max_depth=100,n_feats=None):
+        self.min_samples_split=min_samples_split
+        self.max_depth=max_depth
+        self.n_feats=n_feats
+        self.root=None
+
+
+
+
