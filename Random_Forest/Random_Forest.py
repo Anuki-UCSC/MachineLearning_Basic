@@ -2,6 +2,10 @@ import numpy as np
 from decision_tree import DecisionTree
 from collections import Counter
 
+def most_common_label(y):
+        counter=Counter(y)
+        most_common=counter.most_commoon(1)[0][0]
+        return most_common   
 
 
 class RandomForest:
