@@ -12,3 +12,12 @@ class RandomForest:
         self.n_feats=n_feats
         self.trees=[]
 
+    def fit(self,X,y):
+        self.tree=[]
+        for _ in range(self.n_trees):
+            tree=DecisionTree(min_samples_split=self.min_samples_split,
+            max_depth=self.max_depth,n_feats=self.n_feats)
+        X_sample,y_sample=bootstrap_sample(X,y)
+        tree.fit(X_sample,y_sample)
+        self.n_trees.append(tree)
+
