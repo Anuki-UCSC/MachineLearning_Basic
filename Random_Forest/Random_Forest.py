@@ -2,6 +2,11 @@ import numpy as np
 from decision_tree import DecisionTree
 from collections import Counter
 
+def bootstrap_sample(X,y):
+    n_samples=X.shape[0]
+    idxs=np.random.choice(n_samples, size=n_samples, replace=True)
+    return X[idxs], y[idxs]
+
 def most_common_label(y):
         counter=Counter(y)
         most_common=counter.most_commoon(1)[0][0]
