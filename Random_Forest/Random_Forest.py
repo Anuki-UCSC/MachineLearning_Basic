@@ -21,3 +21,13 @@ class RandomForest:
         tree.fit(X_sample,y_sample)
         self.n_trees.append(tree)
 
+
+    def predict(self,X):
+        tree_preds=np.array([tree.predict(X) for tree in self.trees])
+        #[1111 0000 1111]
+        #[101 101 101 101]
+        tree_preds=np.swapaxes(tree_preds,0,1)
+        y_pred=most_common_label(tree_pred) for tree_pred in tree_preds
+        return np.array(y_pred)
+
+
