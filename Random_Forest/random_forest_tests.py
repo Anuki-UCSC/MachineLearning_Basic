@@ -18,3 +18,6 @@ clf=RandomForest(n_trees=3)
 clf.fit(X_train,y_train)
 
 y_pred =clf.predict(X_test)
+acc=accuracy(y_test,y_pred)
+
+print("Accuracy:",acc)
